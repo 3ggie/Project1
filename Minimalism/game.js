@@ -60,6 +60,22 @@ function animate() {
 	Eaten();
 }
 
+/*Decrement the 30 second timer
+When the timer has reached 0 I stop the keybaord functionality and the
+user must restart the browser to play again.*/
+function keepTime(){
+  timer -= 1;
+  timerBoard.setText("Timer: " + timer);
+  if(timer == 0){
+    GameOver.position.x = 65;
+    GameOver.position.y = 200;
+    GameOver.setText("You've Eaten " + score + " Hearts" + "\n" + "To Play Again, Restart The Browser");
+    stage.addChild(GameOver);
+    EndGame = true;
+    clearInterval(timeKeeper);
+
+  }
+}
 
 
 //Finding a random space on the map for the heart to spawn
