@@ -50,3 +50,46 @@ stage.addChild(zombieSprite);
 stage.addChild(heartSprite);
 stage.addChild(scoreBoard);
 stage.addChild(timerBoard);
+
+//On Click
+document.addEventListener('keydown', Controller);
+animate();
+function animate() {
+	requestAnimationFrame(animate);
+	renderer.render(stage);
+	Eaten();
+}
+
+
+//wasd and arrow keys funcionality
+function Controller(key) {
+    if(!EndGame){
+      if (key.keyCode === 87 || key.keyCode === 38) {
+
+        key.preventDefault();
+          if (zombieSprite.position.y != 10) {
+              zombieSprite.position.y -= 10;
+          }
+      }
+
+      if (key.keyCode === 65 || key.keyCode === 37) {
+        key.preventDefault();
+          if (zombieSprite.position.x != 10) {
+              zombieSprite.position.x -= 10;
+          }
+      }
+
+      if (key.keyCode === 68 || key.keyCode === 39) {
+        key.preventDefault();
+          if (zombieSprite.position.x != renderer.width - 10) {
+              zombieSprite.position.x += 10;
+          }
+      }
+      if (key.keyCode === 83 || key.keyCode === 40) {
+        key.preventDefault();
+          if (zombieSprite.position.y != renderer.height - 10) {
+              zombieSprite.position.y += 10;
+          }
+      }
+    }
+}
