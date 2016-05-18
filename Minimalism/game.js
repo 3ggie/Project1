@@ -61,6 +61,27 @@ function animate() {
 }
 
 
+
+//Finding a random space on the map for the heart to spawn
+function spawnHeart() {
+    var randx = 10 * Math.floor((Math.random() * 39) + 1);
+    var randy = 10 * Math.floor((Math.random() * 39) + 1);
+    heartSprite.position.x = randx;
+    heartSprite.position.y = randy;
+}
+//Calling spawnHeart function
+spawnHeart();
+
+//checks to see if the zombie has eaten a heart
+function Eaten() {
+
+    if (heartSprite.position.x === zombieSprite.position.x && heartSprite.position.y === zombieSprite.position.y) {
+        score += 1;
+        scoreBoard.setText("Hearts Eaten: " + score);
+        spawnHeart();
+    }
+}
+
 //wasd and arrow keys funcionality
 function Controller(key) {
     if(!EndGame){
